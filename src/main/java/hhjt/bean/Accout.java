@@ -11,6 +11,8 @@ public class Accout {
 	private int id;
 	private String accout;
 	private String passwd;
+	
+	
 	public int getId() {
 		return id;
 	}
