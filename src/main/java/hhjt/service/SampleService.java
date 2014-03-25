@@ -1,6 +1,6 @@
 package hhjt.service;
 
-import hhjt.bean.Accout;
+import hhjt.bean.Account;
 import hhjt.dao.AccoutDao;
 
 import javax.transaction.Transactional;
@@ -14,7 +14,7 @@ public class SampleService {
 
 	@Autowired
 	AccoutDao dao;
-	public void insert(Accout accout){
+	public void insert(Account accout){
 		dao.addAccout(accout);
 	}
 }

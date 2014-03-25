@@ -1,6 +1,6 @@
 package hhjt.action;
 
-import hhjt.bean.Accout;
+import hhjt.bean.Account;
 import hhjt.service.SampleService;
 
 import javax.annotation.Resource;
@@ -23,9 +23,8 @@ public class SampleAction extends ActionSupport {
 	private String passwd;
 	
 	public String execute(){
-		Accout act=new Accout();
-		act.setAccout(accout);
-		act.setPasswd(passwd);
+		Account act=new Account();
+		
 		service.insert(act);
 		return SUCCESS;
 	}

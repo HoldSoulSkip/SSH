@@ -1,6 +1,6 @@
 package hhjt.dao;
 
-import hhjt.bean.Accout;
+import hhjt.bean.Account;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
@@ -15,7 +15,7 @@ public class AccoutDao {
 	@Resource
 	private SessionFactory sessionFactory;
 	
-	public void addAccout(Accout accout){
+	public void addAccout(Account accout){
 		sessionFactory.getCurrentSession().save(accout);
 	}
 	
