@@ -5,16 +5,19 @@ import hhjt.service.SampleService;
 
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 @Controller
 @Scope(value="prototype")
 public class SampleAction extends ActionSupport {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Resource
 	private SampleService service;
