@@ -57,6 +57,4 @@ public class SampleAction extends ActionSupport {
 		this.passwd = passwd;
 	}
 	
-	
-	
 }

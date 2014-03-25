@@ -2,6 +2,7 @@ package hhjt.bean;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 public class Accout {
@@ -10,6 +11,8 @@ public class Accout {
 	private int id;
 	private String accout;
 	private String passwd;
+	
+	
 	public int getId() {
 		return id;
 	}
