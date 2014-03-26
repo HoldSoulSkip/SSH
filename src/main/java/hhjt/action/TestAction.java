@@ -1,5 +1,6 @@
 package hhjt.action;
 
+
 import javax.annotation.Resource;
 
 import org.apache.struts2.interceptor.validation.SkipValidation;
@@ -83,5 +84,6 @@ public class TestAction extends ActionSupport {
 	public void setAs(AccountService as) {
 		this.as = as;
 	}
-
 }
+
+
