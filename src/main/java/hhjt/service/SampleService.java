@@ -1,7 +1,7 @@
 package hhjt.service;
 
 import hhjt.bean.Account;
-import hhjt.dao.AccoutDao;
+import hhjt.dao.AccountDao;
 
 import javax.transaction.Transactional;
 
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 public class SampleService {
 
 	@Autowired
-	AccoutDao dao;
-	public void insert(Account accout){
-		dao.addAccout(accout);
+	AccountDao dao;
+	public void insert(Account account){
+		dao.addAccout(account);;
 	}
 }
