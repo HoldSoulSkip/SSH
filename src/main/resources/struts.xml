@@ -16,4 +16,5 @@
         	<result name="input">/WEB-INF/jsp/reg.jsp</result>
         </action>
     </package>
+    <include file="struts-info.xml"/>
 </struts>

@@ -10,46 +10,66 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="t_info")
+@Table(name = "t_info")
 public class Info implements Serializable {
 
 	private static final long serialVersionUID = -8397241500275321576L;
-	
+
 	@Id
 	@GeneratedValue
 	private Integer id;
 	private String title;
-	
+
 	private String content;
-	private Date inof_time;
-	@ManyToOne(fetch=FetchType.EAGER,optional=true)
-	@JoinColumn(name="account_id")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date info_time;
+	@ManyToOne(fetch = FetchType.EAGER, optional = true)
+	@JoinColumn(name = "account_id")
 	private Account account;
-	
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getInof_time() {
-		return inof_time;
+
+	public Date getInfo_time() {
+		return info_time;
 	}
-	public void setInof_time(Date inof_time) {
-		this.inof_time = inof_time;
+
+	public void setInfo_time(Date info_time) {
+		this.info_time = info_time;
 	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	
 }
