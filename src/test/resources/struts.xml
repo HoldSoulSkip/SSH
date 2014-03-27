@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+ 
+<struts>
+ 
+ 	<constant name="struts.objectFactory" value="spring" />
+    <constant name="struts.devMode" value="false" />
+ 
+    <package name="ss" namespace="/" extends="struts-default">
+ 
+        
+        <action name="accAction_*" class="testAction" method="{1}" >
+        	<result name="toreg">/WEB-INF/jsp/reg.jsp</result>
+        	<result name="welcome">welcom.jsp</result>
+        	<result name="input">/WEB-INF/jsp/reg.jsp</result>
+        </action>
+    </package>
+</struts>
