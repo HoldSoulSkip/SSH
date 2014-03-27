@@ -1,48 +1,52 @@
 package hhjt.service.impl;
 
-import hhjt.bean.Account;
-import hhjt.dao.BaseDao;
-import hhjt.service.AccountService;
-import hhjt.util.ValidateUtil;
-
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-/**
- * 
- * @author cl
- *	extends BaseServiceImpl的情况只适合注入一种Dao的Service，
- *	如果一个Service需要多种Dao时，不能extends BaseServiceImpl，
- *
- */
+import hhjt.bean.Account;
+import hhjt.dao.AccountDao;
+import hhjt.service.AccountService;
 
-@Service("accountService")
-@Transactional(rollbackFor = Exception.class)
-public class AccountServiceImpl extends BaseServiceImpl<Account> implements
-		AccountService {
+@Service(value="actService")
+@Transactional
+public class AccountServiceImpl implements AccountService {
 
-//	@Resource(name="accountDao")
-//	private BaseDao<Account> dao;
-	@Resource(name="accountDao")
-	public void setDao(BaseDao<Account> dao) {
-		super.setDao(dao);
-	}
-	public boolean isRegisted(String name) {
-		String hql = "from Account u where u.name=?";
-		List<Account> list = this.findEntityByHQL(hql, name);
-		return ValidateUtil.isValid(list);
+	@Resource
+	private AccountDao accountDao;
+	@Override
+	public Account login(Account account) {
+		// TODO Auto-generated method stub
+		return accountDao.findAccoutByNameAndPassword(account);
 	}
 
-	/**
-	 * 检查登陆信息是否正确
-	 */
-	public Account checkInfo(String name, String password) {
-		String hql = "from Account u where u.name = ? and u.password = ?";
-		List<Account> list = this.findEntityByHQL(hql, name, password);
-		return ValidateUtil.isValid(list) ? list.get(0) : null;
+	@Override
+	public boolean checkName(Account account) {
+		// TODO Auto-generated method stub
+		Account act=accountDao.findAccoutByName(account);
+		if(act==null) return true;
+		return false;
 	}
+
+	@Override
+	public Account registe(Account account) {
+		// TODO Auto-generated method stub
+		return accountDao.addAccount(account);
+	}
+
+	@Override
+	public Account setLevel(Account account) {
+		// TODO Auto-generated method stub
+		return accountDao.updateAccout(account);
+	}
+
+	@Override
+	public List<Account> listAllAccounts() {
+		// TODO Auto-generated method stub
+		return accountDao.getAllAccounts();
+	}
+
 }
