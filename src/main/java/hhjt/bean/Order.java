@@ -89,4 +89,5 @@ public class Order implements Serializable {
 	public void setOrder_state(int order_state) {
 		this.order_state = order_state;
 	}
+	
 }
