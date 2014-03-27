@@ -1,6 +1,11 @@
 package hhjt.entity;
 
-
+/**
+ * 
+ * @author 炜
+ * 为t_ticket数据库搜索语句中的t.name和t.value设定的数据结构
+ *
+ */
 public class QueryClass {
 	private String name;
 	private Object value;
