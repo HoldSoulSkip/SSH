@@ -2,8 +2,8 @@ package hhjt.entity;
 
 /**
  * 
- * @author ì¿
- * Îªt_ticketÊı¾İ¿âËÑË÷Óï¾äÖĞµÄt.nameºÍt.valueÉè¶¨µÄÊı¾İ½á¹¹
+ * @author ç‚œ
+ * ä¸ºt_ticketæ•°æ®åº“çš„æœç´¢è¯­å¥è®¾å®št.nameå’Œt.valueçš„æ•°æ®ç»“æ„
  *
  */
 public class QueryClass {

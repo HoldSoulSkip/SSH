@@ -13,8 +13,8 @@ import org.springframework.stereotype.Repository;
 
 /**
  * 
- * @author ì¿
- * ¶ÔÊı¾İ¿ât_ticketµÄÔöÉ¾¸Ä²é
+ * @author ç‚œ
+ * å¯¹t_ticketæ•°æ®åº“æ“ä½œ
  *
  */
 @Repository("ticketDao")
