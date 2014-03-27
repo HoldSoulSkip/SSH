@@ -54,4 +54,10 @@ public class Info implements Serializable {
 	public void setInfo_time(Date info_time) {
 		this.info_time = info_time;
 	}
+	public Account getAccount() {
+		return account;
+	}
+	public void setAccount(Account account) {
+		this.account = account;
+	}
 }
