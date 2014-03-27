@@ -1,9 +1,7 @@
 package hhjt.entity;
 
-import java.io.Serializable;
 
-public class QueryClass implements Serializable {
-	private static final long serialVersionUID = 176959234347494410L;
+public class QueryClass {
 	private String name;
 	private Object value;
 

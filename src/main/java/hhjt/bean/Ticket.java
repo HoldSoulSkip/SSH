@@ -24,7 +24,7 @@ public class Ticket implements Serializable {
 	
 	private Date begin_time;
 	private Date end_time;
-	private int limit;
+	private int tic_limit;
 	public Integer getId() {
 		return id;
 	}
@@ -55,11 +55,11 @@ public class Ticket implements Serializable {
 	public void setEnd_time(Date end_time) {
 		this.end_time = end_time;
 	}
-	public int getLimit() {
-		return limit;
+	public int getTic_limit() {
+		return tic_limit;
 	}
-	public void setLimit(int limit) {
-		this.limit = limit;
+	public void setTic_limit(int tic_limit) {
+		this.tic_limit = tic_limit;
 	}
 	
 }
