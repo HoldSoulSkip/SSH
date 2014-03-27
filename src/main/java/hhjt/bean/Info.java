@@ -1,5 +1,7 @@
 package hhjt.bean;
 
+
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -12,7 +14,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="t_info")
-public class Info {
+
+public class Info implements Serializable {
+
+	private static final long serialVersionUID = -8397241500275321576L;
+
 	@Id
 	@GeneratedValue
 	private Integer id;
@@ -23,7 +29,7 @@ public class Info {
 	@ManyToOne(fetch=FetchType.EAGER,optional=true)
 	@JoinColumn(name="account_id")
 	private Account account;
-
+	
 	public Integer getId() {
 		return id;
 	}
