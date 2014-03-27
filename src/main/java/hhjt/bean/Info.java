@@ -25,7 +25,7 @@ public class Info implements Serializable {
 	private String title;
 
 	private String content;
-	private Date inof_time;
+	private Date info_time;
 	@ManyToOne(fetch=FetchType.EAGER,optional=true)
 	@JoinColumn(name="account_id")
 	private Account account;
@@ -48,10 +48,16 @@ public class Info implements Serializable {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getInof_time() {
-		return inof_time;
+	public Date getInfo_time() {
+		return info_time;
 	}
-	public void setInof_time(Date inof_time) {
-		this.inof_time = inof_time;
+	public void setInfo_time(Date info_time) {
+		this.info_time = info_time;
+	}
+	public Account getAccount() {
+		return account;
+	}
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 }
