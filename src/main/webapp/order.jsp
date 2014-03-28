@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>Insert title here</title>
+<title>登陆</title>
 </head>
 <body>
-	<form action="sampleAction">
-		账号：<input type="text" name="accout"/>
-		密码:<input type="password" name="passwd"/>
-		<input type="submit" value="提交"/>
+	<form action="act_orderAction" method="post">
+		订单号：<input type="text" name="order.order_id"/><br/>
+		票种：<input type="text" name="ticketId"/><br>
+		<input type="submit" value="预定"/>
 	</form>
 </body>
 </html>

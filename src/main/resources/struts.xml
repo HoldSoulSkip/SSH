@@ -7,9 +7,29 @@
  	<constant name="struts.objectFactory" value="spring" />
     <constant name="struts.devMode" value="false" />
  
-    <package name="ss" namespace="/" extends="struts-default">
+    <package name="ssh" namespace="/" extends="struts-default">
  
         
+        <action name="act_loginAction" class="accountAction" method="login" >
+        	<result name="success">loginsuc.jsp</result>
+        	<result name="input">login.jsp</result>
+        </action>
+        
+         <action name="act_registerAction" class="accountAction" method="register" >
+        	<result name="success">registersuc.jsp</result>
+        	<result name="input">register.jsp</result>
+        </action>
+        
+        <action name="act_empowerAction" class="accountAction" method="empower" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
+        
+        <action name="act_reqEmpowerAction" class="accountAction" method="reqEmpower" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
+       
+       <action name="act_orderAction" class="accountAction" method="order" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
     </package>
 </struts>
-

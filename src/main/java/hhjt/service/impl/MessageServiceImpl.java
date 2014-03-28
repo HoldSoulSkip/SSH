@@ -9,37 +9,54 @@ import org.springframework.stereotype.Service;
 
 import hhjt.bean.Account;
 import hhjt.bean.Message;
-import hhjt.dao.impl.MessageDaoImpl;
+import hhjt.dao.BaseDao;
+import hhjt.dao.impl.MessageDao;
 import hhjt.service.MessageService;
 
 @Transactional
 @Service(value="msgService")
 public class MessageServiceImpl implements MessageService {
 
+	@SuppressWarnings("rawtypes")
 	@Resource
-	private MessageDaoImpl msgDao;
+	private BaseDao msgDao;
+
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Message> getSendMsg(Account account) {
+	public List<Message> getSendMsg(int actId) {
 		// TODO Auto-generated method stub
-		return msgDao.findMsgsBySendAccount(account);
+		String hql="from Message msg where msg.sendAccount.id=?";
+		return msgDao.findEntityByHQL(hql,actId);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Message> getRecvMsg(Account account) {
+	public List<Message> getRecvMsg(int actId) {
 		// TODO Auto-generated method stub
-		return msgDao.findMsgByRecvAccount(account);
+		String hql="from Message msg where msg.recvAccount.id=?";
+		return msgDao.findEntityByHQL(hql,actId);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void removeMsg(Message msg) {
+	public void removeMsg(int msgId) {
 		// TODO Auto-generated method stub
-		msgDao.delMsg(msg);
+		String hql="delete Message msg where msg.id=?";
+		msgDao.batchEntityByHQL(hql, msgId);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void sendMsg(Message msg) {
+	public void sendMsg(int sourceId, int endId, String content) {
 		// TODO Auto-generated method stub
-		msgDao.addMsg(msg);
+		Account sourceAct=new Account();
+		Account endAct=new Account();
+		sourceAct.setId(sourceId);
+		endAct.setId(endId);
+		Message msg=new Message();
+		msg.setSendAccount(sourceAct);
+		msg.setRecvAccount(endAct);
+		msg.setContent(content);
+		msgDao.saveEntity(msg);
 	}
-
 }

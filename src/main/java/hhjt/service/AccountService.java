@@ -6,9 +6,9 @@ import hhjt.bean.Account;
 
 public interface AccountService {
 	
-	public Account login(Account account);	
-	public boolean checkName(Account account);
-	public Account registe(Account account);
-	public Account setLevel(Account account);
+	public Account login(String username,String password);	
+	public boolean checkName(String username);
+	public void register(Account account);
+	public void setLevel(int actId,int level);
 	public List<Account> listAllAccounts();
 }
