@@ -11,5 +11,6 @@
  
         
     </package>
+    <include file="struts-info.xml" />
 </struts>
 
