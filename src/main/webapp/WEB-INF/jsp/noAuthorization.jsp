@@ -12,7 +12,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>公告</title>
+<title>没有权限</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -27,20 +27,7 @@
 
 <body>
 	<center>
-		<h2>
-			<s:property value="info.title" />
-		</h2>
-	</center>
-	<center>
-		<div>
-			<s:text name="info.content" />
-		</div>
-	</center>
-	<div style="float: right;">
-		<p>
-			发布时间：
-			<s:date name="info.info_time" format="yyyy/MM/dd HH:mm:ss" />
-		<p>
-	</div>
+		您没有权限！
+	</center>		
 </body>
 </html>
