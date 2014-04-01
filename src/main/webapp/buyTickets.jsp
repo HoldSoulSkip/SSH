@@ -8,63 +8,40 @@
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta content="X-UA-Compatible" content="IE=Edge">
+
 <title>购票</title>
 </head>
 <body>
   <div>
     <div>
-      <ul id="orderInfo">
-      	<li>
-      		订单号：<span id="orderId" style="width: 100">11111111111</span>
-      		预定日期：<span id="orderTime" style="width: 100">${showTime}</span>
-      	</li>
-      </ul>
-      <ul id="consumerInfo">
-        <li>
-        	订票人：<span id="account_name" style="width: 100"></span>
-        	等级：<span id="level" style="width: 100"></span>
-        </li>
-        <li>
-        	邮箱：<input type="text" id="email" style="width: 100">
-       		电话：<input type="text" id="phone" style="width: 100">
-        </li>
-      </ul>
-      <ul id="ticketsInfo">
-        <li>
-        	使用时间：<input type="text" id="beginTime" onclick="">
-        	票种：<select name="ticket_type" id="ticket_type" onchange="">
-        	  <option>--请选择--</option>
-        	</select>
-        	票价：<input type="text" name="price" id="price" disabled>
-        </li>
-      </ul>
-      <ul>
-        <li><button>确认订单</button>
-      </ul>
+    <table>
+      <tr id="orderInfo">
+      	<td width="80">订单号：<td><span id="orderId"></span>
+      	<td width="80">定日期：<td><span id="orderTime">${showTime}</span>      	
+      <tr id="consumerInfo">
+        <td width="80">订票人：<td><span id="account_name"></span>
+        <td width="80">等级：<td><span id="level"></span> 
+      <tr  id="consumerInfo">       
+        <td width="80">邮箱：<td><input type="text" id="email">
+       	<td width="80">电话：<td><input type="text" id="phone">        
+      </tr>
+      <tr id="ticketsInfo">
+        <td width="80">使用时间：<td><input type="text" id="beginTime" onclick="selectDate(this,this)">
+      </tr>
+      <tr>
+        <td width="80">票种：<td><select name="ticket_type" id="ticket_type" onchange="" style="margin-left:2px; width:153px">
+        	        <option>---请选择---</option>
+        	      </select>
+        <td width="80">票价：<td><input type="text" name="price" id="price" disabled>       
+      </table>
+      <button style="width: 100px;height: 30px">确认订单</button>
     </div>  
     
   </div>
   
   <script src="/ss/js/jquery-1.11.0.min.js"></script>
-  <script src="/ss/js/jquery-2.0.3.min.js"></script>
+  <script src="/ss/js/calendar.js"></script>
   <script type="text/javascript">
-	function showTime(){
-		var nowDate = new Date();
-		//alert(nowDate.toLocaleTimeString());
-		var date = nowDate.toLocaleString();
-		alert(date);
-		$("#orderTime").each(function(){
-			$(this).html(date);
-			});
-		
-	}
-	$("#showTime").click(function(){
-		var nowDate = new Date();
-		var date = nowDate.toLocaleString();
-		alert(date);
-		$("#orderTime").html(date);
-		});
-	$.ajax();
   </script>
 </body>
 </html>

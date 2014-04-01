@@ -10,14 +10,10 @@ import javax.annotation.Resource;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
-/**
- * �����dao����,ר�����ڼ̳�
- */
 public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 	
-	private Class clazz ;
+	private Class clazz;
 	
-	/* ע��Ự���� */
 	@Resource
 	private SessionFactory sessionFactory ;
 	
@@ -47,9 +43,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 		sessionFactory.getCurrentSession().delete(t);
 	}
 
-	/**
-	 * ��������
-	 */
+	
 	public void batchEntityByHQL(String hql, Object... objects) {
 		Query q = sessionFactory.getCurrentSession().createQuery(hql);
 		for(int i = 0 ; i < objects.length ; i ++){
@@ -77,7 +71,6 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 		return q.list();
 	}
 	
-	//��ֵ����,ȷ����ѯ������ҽ���һ����¼
 	public Object uniqueResult(String hql,Object...objects){
 		Query q = sessionFactory.getCurrentSession().createQuery(hql);
 		for(int i = 0 ; i < objects.length ; i ++){

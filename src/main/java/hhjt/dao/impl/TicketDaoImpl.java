@@ -90,4 +90,17 @@ public class TicketDaoImpl implements TicketDao{
 			throw re;
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Ticket> findByTime(String time){
+		String sqlString = "from Ticket t where t.begin_time <= '"+time+"' and t.end_time >= '"+time+"'";
+		System.out.println(sqlString);
+		try{
+			Query q =sessionFactory.getCurrentSession().createQuery(sqlString);			
+			List<Ticket> ticketList = q.list();
+			return ticketList;
+		}catch(RuntimeException re) {
+			throw re;
+		}
+	}
 }

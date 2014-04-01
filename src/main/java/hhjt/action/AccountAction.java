@@ -82,7 +82,7 @@ public class AccountAction{
 		
 		Map session=ActionContext.getContext().getSession();
 		Account act=(Account) session.get("account");
-		msgService.sendMsg(act.getId(), 14, "ÇëÇóÊÚÈ¨");
+		msgService.sendMsg(act.getId(), 14, "è¯·æ±‚æˆæƒ");
 		loadSendMsgs();
 		loadRecvMsgs();
 		listOrder();
