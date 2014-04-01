@@ -35,6 +35,12 @@
         <action name="act_editAccountAction" class="accountAction" method="editAccount" >
         	<result name="success">loginsuc.jsp</result>
         </action>
+        
+        
+        <action name="act_delMsgAction" class="accountAction" method="delMsg" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
+        
     </package>
     <include file="struts-info.xml" />
 </struts>

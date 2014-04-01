@@ -23,14 +23,15 @@
 	用户<s:property value="sendAccount.id"/>
 	<s:property value="content"/>
 	<s:property value="state"/>
-	<a href="act_empowerAction?accountId=<s:property value="sendAccount.id"/>">授权</a><a href="#">删除</a><br>
+	<a href="act_empowerAction?accountId=<s:property value="sendAccount.id"/>">授权</a><a href="act_delMsgAction?msgId=<s:property value="id"/>">删除</a><br>
 	</s:iterator>
 	<hr>
 	发送消息列表 <br>
 	<s:iterator value="sendMsgs">
 	用户<s:property value="recvAccount.id"/>
 	<s:property value="content"/>
-	<s:property value="state"/><br>
+	<s:property value="state"/>
+	<a href="act_delMsgAction?msgId=<s:property value="id"/>">删除</a><br>
 	</s:iterator>
 	<hr>
 	订单列表<br>

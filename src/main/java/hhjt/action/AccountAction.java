@@ -35,6 +35,7 @@ public class AccountAction{
 	private int accountId;
 	private Order order;
 	private int ticketId;
+	private int msgId;
 	private List<Order> orders;
 	
 	private void load(){
@@ -79,6 +80,11 @@ public class AccountAction{
 		recvMsgs=msgService.getRecvMsg(act.getId());
 	}
 	
+	public String delMsg(){
+		msgService.removeMsg(msgId);
+		return "success";
+	}
+	
 	public void loadSendMsgs(){
 		Map session=ActionContext.getContext().getSession();
 		Account act=(Account) session.get("account");
@@ -95,7 +101,9 @@ public class AccountAction{
 		
 		Map session=ActionContext.getContext().getSession();
 		Account act=(Account) session.get("account");
-		msgService.sendMsg(act.getId(), 14, "请求授权");
+		if(act.getLevel()==0||(act.getLevel()==null)){
+			msgService.sendMsg(act.getId(), 14, "请求授权");
+		}
 		load();
 		return "success";
 	}
@@ -110,10 +118,10 @@ public class AccountAction{
 	
 	public String empower(){
 		
+		Map session=ActionContext.getContext().getSession();
+		Account act=(Account) session.get("account");
 		actService.setLevel(accountId, 1);
-		loadSendMsgs();
-		loadRecvMsgs();
-		listOrder();
+		load();
 		return "success";
 	}
 	
@@ -211,6 +219,12 @@ public class AccountAction{
 
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
+	}
+	public int getMsgId() {
+		return msgId;
+	}
+	public void setMsgId(int msgId) {
+		this.msgId = msgId;
 	}
 	
 	

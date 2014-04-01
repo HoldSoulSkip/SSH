@@ -23,7 +23,7 @@ public class Account implements Serializable {
 	private Integer id;
 	private String name;
 	private String password;
-	private Integer level;
+	private Integer level=0;
 	private String tel;
 	private String email;
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="account")
