@@ -1,14 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=gb2312"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="gb2312"%>
     <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 </head>
 <body>
 	OK,欢迎您${sessionScope.account.name }
+	<hr>
+	个人信息：<br>
+	账号：${sessionScope.account.name }<br>
+	电话：${sessionScope.account.tel }<br>
+	邮箱: ${sessionScope.account.email}<br>
+	<a href="edit_account.jsp">修改</a>
 	<hr>
 	<a href="act_reqEmpowerAction">申请授权</a>
 	<hr>
@@ -17,7 +23,7 @@
 	用户<s:property value="sendAccount.id"/>
 	<s:property value="content"/>
 	<s:property value="state"/>
-	<a href="act_empowerAction?accountId=<s:property value="sendAccount.id"/>">授权</a><br>
+	<a href="act_empowerAction?accountId=<s:property value="sendAccount.id"/>">授权</a><a href="#">删除</a><br>
 	</s:iterator>
 	<hr>
 	发送消息列表 <br>

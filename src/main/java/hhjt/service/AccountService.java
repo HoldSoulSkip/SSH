@@ -11,4 +11,5 @@ public interface AccountService {
 	public void register(Account account);
 	public void setLevel(int actId,int level);
 	public List<Account> listAllAccounts();
+	public void updateAccount(Account act);
 }

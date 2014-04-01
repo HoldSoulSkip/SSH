@@ -37,6 +37,11 @@ public class AccountAction{
 	private int ticketId;
 	private List<Order> orders;
 	
+	private void load(){
+		loadSendMsgs();
+		loadRecvMsgs();
+		listOrder();
+	}
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String login(){
 		System.out.println("username:"+username);
@@ -45,12 +50,20 @@ public class AccountAction{
 		if(act==null) return "input";
 		Map session=ActionContext.getContext().getSession();
 		session.put("account",act);
-		loadSendMsgs();
-		loadRecvMsgs();
-		listOrder();
+		load();
 		return "success";
 	}
 	
+	public String editAccount(){
+		
+		Map session=ActionContext.getContext().getSession();
+		Account act=(Account) session.get("account");
+		account.setId(act.getId());
+		actService.updateAccount(account);
+		session.put("account", account);
+		load();
+		return "success";
+	}
 	public String register(){
 		
 		if(!actService.checkName(username))
@@ -83,9 +96,7 @@ public class AccountAction{
 		Map session=ActionContext.getContext().getSession();
 		Account act=(Account) session.get("account");
 		msgService.sendMsg(act.getId(), 14, "请求授权");
-		loadSendMsgs();
-		loadRecvMsgs();
-		listOrder();
+		load();
 		return "success";
 	}
 	
@@ -93,9 +104,7 @@ public class AccountAction{
 		Map session=ActionContext.getContext().getSession();
 		Account act=(Account) session.get("account");
 		orderService.addOrder(order,ticketId,act.getId());
-		loadSendMsgs();
-		loadRecvMsgs();
-		listOrder();
+		load();
 		return "success";
 	}
 	
