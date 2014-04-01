@@ -1,17 +1,16 @@
 package hhjt.action;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
 import hhjt.bean.Account;
 import hhjt.bean.Info;
 import hhjt.service.InfoService;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.apache.struts2.interceptor.SessionAware;
-import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -47,6 +46,12 @@ public class InfoAction extends ActionSupport implements Preparable ,SessionAwar
 		return "infoListPage";
 	}
 	
+	//can not  edit delete and add
+	// account unneed Authorization
+	public String toLookInfoList() {
+		infos = ifs.getAllInfos();
+		return "lookInfoListPage";
+	}
 	public String toEditInfo() {
 //		System.out.println("edit page");
 //		System.out.println(sid);
@@ -108,7 +113,7 @@ public class InfoAction extends ActionSupport implements Preparable ,SessionAwar
 	public InfoService getIfs() {
 		return ifs;
 	}
-
+	
 	public void setIfs(InfoService ifs) {
 		this.ifs = ifs;
 	}

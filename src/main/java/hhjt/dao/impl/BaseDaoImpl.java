@@ -15,6 +15,7 @@ import org.hibernate.SessionFactory;
  */
 public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 	
+	@SuppressWarnings("rawtypes")
 	private Class clazz ;
 	
 	/* ע��Ự���� */
@@ -24,6 +25,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 	/**
 	 * 
 	 */
+	@SuppressWarnings("rawtypes")
 	public BaseDaoImpl(){
 		
 		ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
