@@ -15,13 +15,13 @@ public class TestService {
 
 	@Test
 	public void test() throws ParseException{
-		//service 不能new 要从spring里读取，否则会是空指针
+		//service娴嬭瘯鏃朵笉鑳界洿鎺ュ垱寤猴紝瑕佽鍙杝pring閰嶇疆鏂囦欢锛屽惁鍒欎細涓虹┖鎸囬拡
 		ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("applicationcontext.xml");
 		TicketServiceImpl service = (TicketServiceImpl) ac.getBean("ticketServiceImpl");
 		Ticket t = new Ticket();
 		Date time = new Date();
 		t.setBegin_time(time);
-		t.setClass_name("优惠票");
+		t.setClass_name("锟脚伙拷票");
 		t.setPrice(90.0);
 		String s = "2014-03-26 17:17:35"; 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 

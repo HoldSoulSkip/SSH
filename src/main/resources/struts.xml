@@ -10,9 +10,9 @@
  
     <package name="ss" namespace="/" extends="struts-default">
  
-        <action name="sampleAction" class="sampleAction">
+        <action name="ticketAction" class="ticketAction" method="findTickets">
             <result>welcome.jsp</result>
-            <result name="input">index.jsp</result>
+            <result name="input">buyTickets.jsp</result>
         </action>
     </package>
 </struts>

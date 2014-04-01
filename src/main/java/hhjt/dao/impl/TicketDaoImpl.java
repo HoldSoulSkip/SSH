@@ -14,13 +14,17 @@ import org.springframework.stereotype.Repository;
 /**
  * 
  * @author 炜
- * 
+ * 对t_ticket数据库操作
  *
  */
 @Repository("ticketDao")
 public class TicketDaoImpl implements TicketDao{
 	@Autowired
-	private SessionFactory sessionFactory;		
+	private SessionFactory sessionFactory;	
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	public boolean save(Ticket instance) {
 		try{

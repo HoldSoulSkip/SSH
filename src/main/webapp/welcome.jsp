@@ -9,5 +9,10 @@
 </head>
 <body>
 	OK,»¶Ó­Äú£¡
+	<div>
+	  <form action="ticketAction">
+	    <input type="submit" value="¹ºÆ±">
+	  </form>
+	</div>
 </body>
 </html>
