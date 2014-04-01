@@ -41,8 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td >信息标题</td>
 					<td >创建时间</td>
 					<td >查看</td>
-					<td >修改</td>
-					<td >删除</td>
+					
 				</tr>
 				<s:iterator value="infos">
 					<s:set var="sId" value="id" />
@@ -51,13 +50,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td><s:property value="title" /></td>
 						<td><s:date name="info_time" format="yyyy/MM/dd HH:mm:ss" /></td>
 						<td><s:a action="InfoAction_lookInfo?sid=%{#sId}" >查看</s:a></td>
-						
-						<td><s:a action="InfoAction_toEditInfo?sid=%{#sId}" >修改</s:a></td>
-						<td><s:a action="InfoAction_deleteInfo?sid=%{#sId}" >删除</s:a></td>
 					</tr>
 				</s:iterator>
 			</table>
 		</s:else>
-		<s:a action="InfoAction_toEditInfo" >增加</s:a>
 	</body>
 </html>

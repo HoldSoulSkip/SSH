@@ -44,7 +44,7 @@ public class InfoServiceImpl implements InfoService {
 	@Override
 	public boolean isHasAuthorization(Account account) {
 		if (account.getLevel() != null) {
-			if (account.getLevel() > 1)
+			if (account.getLevel() > 0)
 				return true;
 		}
 		return false;
