@@ -2,6 +2,7 @@ package hhjt.service.impl;
 
 import java.util.List;
 
+import hhjt.bean.Account;
 import hhjt.bean.Info;
 import hhjt.dao.BaseDao;
 import hhjt.service.InfoService;
@@ -20,8 +21,9 @@ public class InfoServiceImpl implements InfoService {
 
 	@Override
 	public List<Info> getAllInfos() {
-		String hql = "select info from Info info";
-		return infoDao.findEntityByHQL(hql);
+		//String hql = "select info from Info info";
+	//	return infoDao.findEntityByHQL(hql);
+		return infoDao.getAllEntity();
 	}
 
 	@Override
@@ -37,6 +39,16 @@ public class InfoServiceImpl implements InfoService {
 	@Override
 	public void deleteInfo(Integer sid) {
 		infoDao.deleteEntity(infoDao.getEntity(sid));
+	}
+
+	@Override
+	public boolean isHasAuthorization(Account account) {
+		if (account.getLevel() != null) {
+			if (account.getLevel() > 1)
+				return true;
+		}
+		return false;
+
 	}
 
 }

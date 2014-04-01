@@ -85,4 +85,12 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 		}
 		return q.uniqueResult();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<T> getAllEntity() {
+		System.out.println(" from "+clazz.getName()+" t");
+		
+		return sessionFactory.getCurrentSession().createQuery(" from "+clazz.getName()+" t").list();
+		
+	}
 }

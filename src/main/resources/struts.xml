@@ -32,4 +32,5 @@
         	<result name="success">loginsuc.jsp</result>
         </action>
     </package>
+    <include file="struts-info.xml" />
 </struts>
