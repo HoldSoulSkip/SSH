@@ -41,7 +41,7 @@ public class OrderServiceTest {
 	@Test
 	public void testAddOrder(){
 		//ods.addOrder(odr1);
-		ods.addOrder(odr2);
+		//ods.addOrder(odr2);
 		assertEquals(new Integer(5),odr1.getId());
 		assertEquals(new Integer(7),odr2.getId());
 	}
@@ -62,16 +62,16 @@ public class OrderServiceTest {
 	
 	@Test
 	public void testListOrders(){
-		List<Order> odrs=ods.listOrders(act1);
-		for(Order od:odrs)
-			System.out.println(od.getId());
+	//	List<Order> odrs=ods.listOrders(act1);
+//		for(Order od:odrs)
+//			System.out.println(od.getId());
 	}
 	
 	@Test
 	public void verifyOrder(){
 		odr1.setId(5);
 		odr1.setOrder_state(1);
-		ods.verifyOrder(odr1);
+	//	ods.verifyOrder(odr1);
 		assertEquals(1, odr1.getOrder_state());
 	}
 }

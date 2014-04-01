@@ -26,6 +26,8 @@
 				<param name="namespace">/</param>
 			</result>
 			<result name="lookInfoPage">/WEB-INF/jsp/lookInfo.jsp</result>
+			<result name="toLoginPage">/index.jsp</result>
+			<result name="noAuthorizationPage">/WEB-INF/jsp/noAuthorization.jsp</result>
         </action>
     </package>
 </struts>

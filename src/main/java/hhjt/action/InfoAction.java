@@ -11,6 +11,7 @@ import hhjt.service.InfoService;
 import javax.annotation.Resource;
 
 import org.apache.struts2.interceptor.SessionAware;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -24,6 +25,7 @@ public class InfoAction extends ActionSupport implements Preparable ,SessionAwar
 	
 	private Info info;
 	
+	private Account account;
 	
 	@Resource(name="infoService")
 	private InfoService ifs;
@@ -34,7 +36,13 @@ public class InfoAction extends ActionSupport implements Preparable ,SessionAwar
 	//接收session的map
 	private Map<String,Object> sessionMap;
 	
+	
 	public String toInfoList() {
+		
+		String auth = hasAuthorization();
+		if(!"ok".equalsIgnoreCase(auth))
+		return auth;
+		
 		 infos = ifs.getAllInfos();
 		return "infoListPage";
 	}
@@ -46,12 +54,35 @@ public class InfoAction extends ActionSupport implements Preparable ,SessionAwar
 //			this.info = ifs.getInfo(sid);
 //			System.out.println(info.getTitle());
 //		}
+		String auth = hasAuthorization();
+		if(!"ok".equalsIgnoreCase(auth))
+		return auth;
+		
+		if(sid != null)
+		this.info = ifs.getInfo(sid);
 		return "toEditInfoPage";
 	}
 	
+	public String hasAuthorization() {
+		if(sessionMap.get("account") != null) {
+			//addActionError(anErrorMessage);
+			account = (Account) sessionMap.get("account");
+			if(!ifs.isHasAuthorization(account)) return "noAuthorizationPage";
+		} else {
+			return "toLoginPage";
+		}
+		return "ok";
+	}
+	
 	public String saveOrUpdate() {
-		Account account = new Account();
-		account.setId(2);
+		
+		String auth = hasAuthorization();
+		if(!"ok".equalsIgnoreCase(auth))
+		return auth;
+		
+		//Account account = new Account();
+	///	account.setId(2);
+		
 		info.setAccount(account);
 		info.setInfo_time(new Date());
 		ifs.saveOrUpdate(info);	
@@ -60,6 +91,11 @@ public class InfoAction extends ActionSupport implements Preparable ,SessionAwar
 	}
 	
 	public String deleteInfo() {
+		
+		String auth = hasAuthorization();
+		if(!"ok".equalsIgnoreCase(auth))
+		return auth;
+		
 		ifs.deleteInfo(sid);
 		return "infoListAction";
 	}
@@ -103,11 +139,7 @@ public class InfoAction extends ActionSupport implements Preparable ,SessionAwar
 	
 	public void prepareToEditInfo() throws  Exception{
 		
-//		System.out.println("edit page");
-//		System.out.println(sid);
 		
-		if(sid != null)
-		this.info = ifs.getInfo(sid);
 	}
 
 	@Override
@@ -120,5 +152,18 @@ public class InfoAction extends ActionSupport implements Preparable ,SessionAwar
 	@Override
 	public void setSession(Map<String, Object> arg0) {
 		sessionMap = arg0;
+//		 account = new Account();
+//			account.setId(2);
+//			account.setLevel(0);
+//		sessionMap.put("account",account );
 	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+	
 }
