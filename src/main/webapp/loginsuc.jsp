@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=gb2312"
-    pageEncoding="gb2312"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,32 +8,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	OK,»¶Ó­Äú${sessionScope.account.name }
+	OK,æ¬¢è¿Žæ‚¨${sessionScope.account.name }
 	<hr>
-	<a href="act_reqEmpowerAction">ÉêÇëÊÚÈ¨</a>
+	<a href="act_reqEmpowerAction">ç”³è¯·æŽˆæƒ</a>
 	<hr>
-	½ÓÊÕÏûÏ¢ÁÐ±í <br>
+	æŽ¥æ”¶æ¶ˆæ¯åˆ—è¡¨ <br>
 	<s:iterator value="recvMsgs">
-	ÓÃ»§<s:property value="sendAccount.id"/>
+	ç”¨æˆ·<s:property value="sendAccount.id"/>
 	<s:property value="content"/>
 	<s:property value="state"/>
-	<a href="act_empowerAction?accountId=<s:property value="sendAccount.id"/>">ÊÚÈ¨</a><br>
+	<a href="act_empowerAction?accountId=<s:property value="sendAccount.id"/>">æŽˆæƒ</a><br>
 	</s:iterator>
 	<hr>
-	·¢ËÍÏûÏ¢ÁÐ±í <br>
+	å‘é€æ¶ˆæ¯åˆ—è¡¨ <br>
 	<s:iterator value="sendMsgs">
-	ÓÃ»§<s:property value="recvAccount.id"/>
+	ç”¨æˆ·<s:property value="recvAccount.id"/>
 	<s:property value="content"/>
 	<s:property value="state"/><br>
 	</s:iterator>
 	<hr>
-	¶©µ¥ÁÐ±í<br>
+	è®¢å•åˆ—è¡¨<br>
 	<s:iterator value="orders">
-	¶©µ¥ºÅ£º<s:property value="order_id"/>
+	è®¢å•å·ï¼š<s:property value="order_id"/>
 	<s:property value="order_state"/><br>
 	</s:iterator>
 	<hr>
-	<a href="order.jsp">ÏÂ·¢¶©µ¥</a>
+	<a href="buyTickets.jsp">ä¸‹å‘è®¢å•</a>
 	<hr>
 </body>
 </html>

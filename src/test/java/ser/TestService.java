@@ -13,22 +13,29 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestService {
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void test() throws ParseException{
-		//service 不能new 要从spring里读取，否则会是空指针
+		//service娴嬭瘯鏃朵笉鑳界洿鎺ュ垱寤猴紝瑕佽鍙杝pring閰嶇疆鏂囦欢锛屽惁鍒欎細涓虹┖鎸囬拡
 		ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("applicationcontext.xml");
 		TicketServiceImpl service = (TicketServiceImpl) ac.getBean("ticketServiceImpl");
 		Ticket t = new Ticket();
 		Date time = new Date();
+		Date time2 = new Date();
+		
+		time2.setMonth(time.getMonth()+7);
+		t.setEnd_time(time2);
 		t.setBegin_time(time);
-		t.setClass_name("优惠票");
+		t.setClass_name("鏅�氱エ");
 		t.setPrice(90.0);
-		String s = "2014-03-26 17:17:35"; 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-		Date s_date =(Date)sdf.parse(s);
-		List<Ticket> tic = service.findTicketByPriceAndBeginTime(90.0, s_date);
-		//List<Ticket> tic = service.findTicketByPrice(20.0);
+		String s = "2014-05-28"; 
+		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		//Date s_date =(Date)sdf.parse(s);
+		//List<Ticket> tic = service.findTicketByPriceAndBeginTime(90.0, s_date);
+		
+		//List<Ticket> tic = service.findTicketByType("鏅�氱エ");
+		List<Ticket> tic = service.findTicketByTime(s);
 		//service.addTicket(t);		
-		System.out.println(tic.size());
+		System.out.println(tic.iterator().next().getClass_name());
 	}
 }

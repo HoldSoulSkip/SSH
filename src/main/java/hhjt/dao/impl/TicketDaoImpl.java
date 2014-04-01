@@ -20,8 +20,13 @@ import org.springframework.stereotype.Repository;
 @Repository("ticketDao")
 public class TicketDaoImpl implements TicketDao{
 	@Autowired
-	private SessionFactory sessionFactory;		
-	
+	private SessionFactory sessionFactory;	
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
+
 	public boolean save(Ticket instance) {
 		try{
 			sessionFactory.getCurrentSession().save(instance);
@@ -30,7 +35,8 @@ public class TicketDaoImpl implements TicketDao{
 			throw re;
 		}		
 	}
-	
+
+
 	public boolean update(Ticket instance) {
 		try{
 			sessionFactory.getCurrentSession().update(instance);
@@ -39,7 +45,7 @@ public class TicketDaoImpl implements TicketDao{
 			throw re;
 		}
 	}
-	
+
 	public boolean saveOrUpdate(Ticket instance) {
 		try{
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
@@ -48,7 +54,7 @@ public class TicketDaoImpl implements TicketDao{
 			throw re;
 		}		
 	}
-	
+
 	public boolean delete(Ticket instance) {
 		try{
 			sessionFactory.getCurrentSession().delete(instance);
@@ -57,7 +63,7 @@ public class TicketDaoImpl implements TicketDao{
 			throw re;
 		}
 	}
-		
+
 	public Ticket findById(Integer id){
 		try{
 			return (Ticket) sessionFactory.getCurrentSession().get(Ticket.class,id);
@@ -78,6 +84,19 @@ public class TicketDaoImpl implements TicketDao{
 			for(int i=0;i<length;i++){
 				q.setParameter(i, queryList.get(i).getValue());
 			}
+			List<Ticket> ticketList = q.list();
+			return ticketList;
+		}catch(RuntimeException re) {
+			throw re;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Ticket> findByTime(String time){
+		String sqlString = "from Ticket t where t.begin_time <= '"+time+"' and t.end_time >= '"+time+"'";
+		System.out.println(sqlString);
+		try{
+			Query q =sessionFactory.getCurrentSession().createQuery(sqlString);			
 			List<Ticket> ticketList = q.list();
 			return ticketList;
 		}catch(RuntimeException re) {

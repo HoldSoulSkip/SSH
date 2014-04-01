@@ -12,5 +12,6 @@ public interface TicketDao {
 	public boolean delete(Ticket instance);
 	public Ticket findById(Integer id);
 	public List<Ticket> findByProperty(List<QueryClass> queryList );
-	
+	public List<Ticket> findByTime(String time);
 }
+
