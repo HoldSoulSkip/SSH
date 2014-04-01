@@ -13,3 +13,4 @@ public interface TicketDao {
 	public Ticket findById(Integer id);
 	public List<Ticket> findByProperty(List<QueryClass> queryList );
 }
+

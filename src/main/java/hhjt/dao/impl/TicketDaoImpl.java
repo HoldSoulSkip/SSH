@@ -26,6 +26,7 @@ public class TicketDaoImpl implements TicketDao{
 		this.sessionFactory = sessionFactory;
 	}
 
+
 	public boolean save(Ticket instance) {
 		try{
 			sessionFactory.getCurrentSession().save(instance);
@@ -34,6 +35,7 @@ public class TicketDaoImpl implements TicketDao{
 			throw re;
 		}		
 	}
+
 
 	public boolean update(Ticket instance) {
 		try{

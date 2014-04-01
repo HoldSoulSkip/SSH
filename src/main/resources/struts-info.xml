@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+ 
+<struts>
+ 
+ 	<constant name="struts.objectFactory" value="spring" />
+    <constant name="struts.devMode" value="false" />
+ 
+    <package name="mypkg" namespace="/" extends="struts-default">
+ 
+ 	 <interceptors>
+		<!-- 自定义拦截器栈 -->
+		<interceptor-stack name="ticketStack">
+			<interceptor-ref name="paramsPrepareParamsStack" />
+		</interceptor-stack>
+    </interceptors>
+	<!-- 自定义默认栈 -->
+	<default-interceptor-ref name="ticketStack" />
+        
+        <action name="InfoAction_*" class="infoAction" method="{1}" >
+        	<result name="infoListPage">/WEB-INF/jsp/infoList.jsp</result>
+        	<result name="toEditInfoPage">/WEB-INF/jsp/editInfo.jsp</result>
+        	<result name="infoListAction" type="redirectAction">
+				<param name="actionName">InfoAction_toInfoList</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="lookInfoPage">/WEB-INF/jsp/lookInfo.jsp</result>
+			<result name="toLoginPage">/index.jsp</result>
+			<result name="noAuthorizationPage">/WEB-INF/jsp/noAuthorization.jsp</result>
+        </action>
+    </package>
+</struts>

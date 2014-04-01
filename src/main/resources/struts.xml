@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+
  
 <struts>
  
  	<constant name="struts.objectFactory" value="spring" />
     <constant name="struts.devMode" value="false" />
  
-    <package name="ss" namespace="/" extends="struts-default">
- 
+    <package name="ssh" namespace="/" extends="struts-default">
         <action name="ticketAction" class="ticketAction" method="findTickets">
             <result>welcome.jsp</result>
             <result name="input">buyTickets.jsp</result>
         </action>
+        <action name="act_loginAction" class="accountAction" method="login" >
+        	<result name="success">loginsuc.jsp</result>
+        	<result name="input">login.jsp</result>
+        </action>
+        
+         <action name="act_registerAction" class="accountAction" method="register" >
+        	<result name="success">registersuc.jsp</result>
+        	<result name="input">register.jsp</result>
+        </action>
+        
+        <action name="act_empowerAction" class="accountAction" method="empower" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
+        
+        <action name="act_reqEmpowerAction" class="accountAction" method="reqEmpower" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
+       
+       <action name="act_orderAction" class="accountAction" method="order" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
     </package>
+    <include file="struts-info.xml" />
 </struts>

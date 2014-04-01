@@ -5,12 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>Insert title here</title>
+<title>注册</title>
 </head>
 <body>
-	<form action="sampleAction">
-		账号：<input type="text" name="accout"/>
-		密码:<input type="password" name="passwd"/>
+	<form action="act_registerAction" method="post">
+		账号：<input type="text" name="account.name"/><br>
+		密码:<input type="password" name="account.password"/><br>
+		电话:<input type="text" name="account.tel"/><br>
+		邮箱:<input type="text" name="account.email"/><br>
 		<input type="submit" value="提交"/>
 	</form>
 </body>
