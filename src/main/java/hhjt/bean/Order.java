@@ -50,6 +50,14 @@ public class Order implements Serializable {
 		this.id = id;
 	}
 
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
 	public Ticket getTicket() {
 		return ticket;
 	}
@@ -64,16 +72,6 @@ public class Order implements Serializable {
 
 	public void setAccount(Account account) {
 		this.account = account;
-	}
-
-	
-
-	public String getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
 	}
 
 	public Date getOrderTime() {

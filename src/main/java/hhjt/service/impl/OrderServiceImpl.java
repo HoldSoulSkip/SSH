@@ -57,4 +57,11 @@ public class OrderServiceImpl implements OrderService {
 		orderDao.batchEntityByHQL(hql, orderId);
 	}
 
+	@Override
+	public Order findOrderById(String orderId) {
+		// TODO Auto-generated method stub
+		String hql="from Order ord where ord.orderId=?";
+		return (Order) orderDao.uniqueResult(hql, orderId);
+	}
+
 }

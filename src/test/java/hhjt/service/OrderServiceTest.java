@@ -15,7 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class OrderServiceTest {
 
-	private OrderService ods;
+	/*private OrderService ods;
 	private Account act1;
 	private Ticket tic1;
 	private Order odr1,odr2;
@@ -23,7 +23,7 @@ public class OrderServiceTest {
 	public void startSpring(){
 		ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
 		ods=(OrderService) ctx.getBean("orderService");
-		act1=new Account();
+		/*act1=new Account();
 		act1.setId(3);
 		tic1=new Ticket();
 		tic1.setId(1);
@@ -38,7 +38,7 @@ public class OrderServiceTest {
 		odr2.setTicket(tic1);
 	}
 
-	@Test
+	/*@Test
 	public void testAddOrder(){
 		//ods.addOrder(odr1);
 		//ods.addOrder(odr2);
@@ -69,9 +69,9 @@ public class OrderServiceTest {
 	
 	@Test
 	public void verifyOrder(){
-		/*odr1.setId(5);
+		odr1.setId(5);
 		odr1.setOrder_state(1);
 		ods.verifyOrder(odr1);
-		assertEquals(1, odr1.getOrder_state());*/
-	}
+		assertEquals(1, odr1.getOrder_state());
+	}*/
 }

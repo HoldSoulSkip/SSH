@@ -1,5 +1,6 @@
 package hhjt.action;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +13,6 @@ import hhjt.service.OrderService;
 import hhjt.service.TicketService;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
@@ -40,6 +40,9 @@ public class AccountAction{
 	private int ticketId;
 	private int msgId;
 	private List<Order> orders;
+	private String orderId;
+	private Date orderTime;
+	private Date orderUseTime;
 	
 	private void load(){
 		loadSendMsgs();
@@ -115,12 +118,29 @@ public class AccountAction{
 	public String order(){
 		Map session=ActionContext.getContext().getSession();
 		Account act=(Account) session.get("account");
-		order.setOrderId(System.currentTimeMillis()+""+act.getId());
 		orderService.addOrder(order,ticketId,act.getId());
 		load();
 		return "success";
 	}
 	
+	public String preOrder(){
+		Map session=ActionContext.getContext().getSession();
+		account=(Account) session.get("account");
+		orderId=System.currentTimeMillis()+""+account.getId();
+		orderTime=new Date();
+		return "success";
+	}
+	
+	public String editOrder(){
+		
+		System.out.println("orderId="+orderId);
+		order=orderService.findOrderById(orderId);
+		orderId=order.getOrderId();
+		orderTime=order.getOrderTime();
+		orderUseTime=order.getTicUseTime();
+		account=order.getAccount();
+		return "success";
+	}
 	public String empower(){
 		
 		Map session=ActionContext.getContext().getSession();
@@ -230,6 +250,24 @@ public class AccountAction{
 	}
 	public void setMsgId(int msgId) {
 		this.msgId = msgId;
+	}
+	public String getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+	public Date getOrderTime() {
+		return orderTime;
+	}
+	public void setOrderTime(Date orderTime) {
+		this.orderTime = orderTime;
+	}
+	public Date getOrderUseTime() {
+		return orderUseTime;
+	}
+	public void setOrderUseTime(Date orderUseTime) {
+		this.orderUseTime = orderUseTime;
 	}
 	
 	

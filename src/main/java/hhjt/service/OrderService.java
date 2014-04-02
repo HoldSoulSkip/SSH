@@ -9,6 +9,8 @@ public interface OrderService {
 
 	public void addOrder(Order order,int ticketId,int actId);
 	
+	public Order findOrderById(String orderId);
+	
 	public void uptOrder(Order order);
 	
 	public void delOrder(Order order);
