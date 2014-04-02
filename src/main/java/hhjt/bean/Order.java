@@ -3,6 +3,7 @@ package hhjt.bean;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,8 @@ public class Order implements Serializable {
 	@GeneratedValue
 	private Integer id;
 
-	private Integer order_id;
+	@Column(name="order_id")
+	private String orderId;
 	@ManyToOne(fetch=FetchType.EAGER,optional=false)
 	@JoinColumn(name="tic_type")
 	private Ticket ticket;
@@ -30,9 +32,15 @@ public class Order implements Serializable {
 	@ManyToOne(fetch=FetchType.EAGER,optional=false)
 	@JoinColumn(name="account_id")
 	private Account account;
-	private Date order_time;
-	private Date tic_use_time;
-	private int order_state;
+	
+	@Column(name="order_time")
+	private Date orderTime;
+	
+	@Column(name="tic_use_time")
+	private Date ticUseTime;
+	
+	@Column(name="order_state")
+	private int orderState;
 
 	public Integer getId() {
 		return id;
@@ -40,14 +48,6 @@ public class Order implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getOrder_id() {
-		return order_id;
-	}
-
-	public void setOrder_id(Integer order_id) {
-		this.order_id = order_id;
 	}
 
 	public Ticket getTicket() {
@@ -66,28 +66,40 @@ public class Order implements Serializable {
 		this.account = account;
 	}
 
-	public Date getOrder_time() {
-		return order_time;
+	
+
+	public String getOrderId() {
+		return orderId;
 	}
 
-	public void setOrder_time(Date order_time) {
-		this.order_time = order_time;
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
 	}
 
-	public Date getTic_use_time() {
-		return tic_use_time;
+	public Date getOrderTime() {
+		return orderTime;
 	}
 
-	public void setTic_use_time(Date tic_use_time) {
-		this.tic_use_time = tic_use_time;
+	public void setOrderTime(Date orderTime) {
+		this.orderTime = orderTime;
 	}
 
-	public int getOrder_state() {
-		return order_state;
+	public Date getTicUseTime() {
+		return ticUseTime;
 	}
 
-	public void setOrder_state(int order_state) {
-		this.order_state = order_state;
+	public void setTicUseTime(Date ticUseTime) {
+		this.ticUseTime = ticUseTime;
 	}
+
+	public int getOrderState() {
+		return orderState;
+	}
+
+	public void setOrderState(int orderState) {
+		this.orderState = orderState;
+	}
+
+	
 	
 }

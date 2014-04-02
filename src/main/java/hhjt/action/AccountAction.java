@@ -9,9 +9,12 @@ import hhjt.bean.Order;
 import hhjt.service.AccountService;
 import hhjt.service.MessageService;
 import hhjt.service.OrderService;
+import hhjt.service.TicketService;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -35,8 +38,14 @@ public class AccountAction{
 	private int accountId;
 	private Order order;
 	private int ticketId;
+	private int msgId;
 	private List<Order> orders;
 	
+	private void load(){
+		loadSendMsgs();
+		loadRecvMsgs();
+		listOrder();
+	}
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String login(){
 		System.out.println("username:"+username);
@@ -45,12 +54,20 @@ public class AccountAction{
 		if(act==null) return "input";
 		Map session=ActionContext.getContext().getSession();
 		session.put("account",act);
-		loadSendMsgs();
-		loadRecvMsgs();
-		listOrder();
+		load();
 		return "success";
 	}
 	
+	public String editAccount(){
+		
+		Map session=ActionContext.getContext().getSession();
+		Account act=(Account) session.get("account");
+		account.setId(act.getId());
+		actService.updateAccount(account);
+		session.put("account", account);
+		load();
+		return "success";
+	}
 	public String register(){
 		
 		if(!actService.checkName(username))
@@ -66,6 +83,11 @@ public class AccountAction{
 		recvMsgs=msgService.getRecvMsg(act.getId());
 	}
 	
+	public String delMsg(){
+		msgService.removeMsg(msgId);
+		return "success";
+	}
+	
 	public void loadSendMsgs(){
 		Map session=ActionContext.getContext().getSession();
 		Account act=(Account) session.get("account");
@@ -78,33 +100,33 @@ public class AccountAction{
 		orders=orderService.listOrders(act.getId());
 	}
 	
+	
 	public String reqEmpower(){
 		
 		Map session=ActionContext.getContext().getSession();
 		Account act=(Account) session.get("account");
-		msgService.sendMsg(act.getId(), 14, "请求授权");
-		loadSendMsgs();
-		loadRecvMsgs();
-		listOrder();
+		if(act.getLevel()==0||(act.getLevel()==null)){
+			msgService.sendMsg(act.getId(), 14, "请求授权");
+		}
+		load();
 		return "success";
 	}
 	
 	public String order(){
 		Map session=ActionContext.getContext().getSession();
 		Account act=(Account) session.get("account");
+		order.setOrderId(System.currentTimeMillis()+""+act.getId());
 		orderService.addOrder(order,ticketId,act.getId());
-		loadSendMsgs();
-		loadRecvMsgs();
-		listOrder();
+		load();
 		return "success";
 	}
 	
 	public String empower(){
 		
+		Map session=ActionContext.getContext().getSession();
+		Account act=(Account) session.get("account");
 		actService.setLevel(accountId, 1);
-		loadSendMsgs();
-		loadRecvMsgs();
-		listOrder();
+		load();
 		return "success";
 	}
 	
@@ -202,6 +224,12 @@ public class AccountAction{
 
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
+	}
+	public int getMsgId() {
+		return msgId;
+	}
+	public void setMsgId(int msgId) {
+		this.msgId = msgId;
 	}
 	
 	

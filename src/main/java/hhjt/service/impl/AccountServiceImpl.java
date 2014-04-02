@@ -63,4 +63,10 @@ public class AccountServiceImpl implements AccountService {
 		return accountDao.findEntityByHQL(hql);
 	}
 
+	@Override
+	public void updateAccount(Account act) {
+		// TODO Auto-generated method stub
+		accountDao.updateEntity(act);
+	}
+
 }
