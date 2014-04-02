@@ -36,8 +36,8 @@
 	<hr>
 	订单列表<br>
 	<s:iterator value="orders">
-	订单号：<s:property value="order_id"/>
-	<s:property value="order_state"/><br>
+	订单号：<s:property value="orderId"/>
+	<s:property value="orderState"/><br>
 	</s:iterator>
 	<hr>
 	<a href="order.jsp">下发订单</a>

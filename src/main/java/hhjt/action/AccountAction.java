@@ -11,7 +11,9 @@ import hhjt.service.MessageService;
 import hhjt.service.OrderService;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -111,6 +113,7 @@ public class AccountAction{
 	public String order(){
 		Map session=ActionContext.getContext().getSession();
 		Account act=(Account) session.get("account");
+		order.setOrderId(System.currentTimeMillis()+""+act.getId());
 		orderService.addOrder(order,ticketId,act.getId());
 		load();
 		return "success";
