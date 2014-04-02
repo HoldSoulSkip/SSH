@@ -161,7 +161,7 @@ public class InfoAction extends ActionSupport implements Preparable ,SessionAwar
 	public Account getAccount() {
 		return account;
 	}
-
+	//set account
 	public void setAccount(Account account) {
 		this.account = account;
 	}
