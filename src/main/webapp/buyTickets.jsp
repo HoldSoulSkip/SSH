@@ -8,25 +8,30 @@
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta content="X-UA-Compatible" content="IE=Edge">
-
 <title>购票</title>
+<script type="text/javascript">
+alert("Ok");
+var ele=document.getElementById("te").value;
+alert(ele);
+</script>
 </head>
 <body>
+<input type="text" value="hello" id="te"/>
   <div>
     <div>
     <table>
       <tr id="orderInfo">
-      	<td width="80">订单号：<td><span id="orderId"></span>
-      	<td width="80">定日期：<td><span id="orderTime">${showTime}</span>      	
+      	<td width="80">订单号：<td><span id="order.orderId"></span>
+      	<td width="80">定日期：<td><span id="orderorderTime">${showTime}</span>      	
       <tr id="consumerInfo">
-        <td width="80">订票人：<td><span id="account_name"></span>
+        <td width="80">订票人：<td><span id="account_name">${sessionScope.account.name }</span>
         <td width="80">等级：<td><span id="level"></span> 
       <tr  id="consumerInfo">       
         <td width="80">邮箱：<td><input type="text" id="email">
        	<td width="80">电话：<td><input type="text" id="phone">        
       </tr>
       <tr id="ticketsInfo">
-        <td width="80">使用时间：<td><input type="text" id="beginTime" onclick="selectDate(this,this)">
+        <td width="80">使用时间：<td><input type="text" id="use_time" value="19910125" onclick="selectDate(this,this)">
       </tr>
       <tr>
         <td width="80">票种：<td><select name="ticket_type" id="ticket_type" onchange="" style="margin-left:2px; width:153px">
