@@ -1,5 +1,6 @@
 package hhjt.service;
 
+import java.util.Date;
 import java.util.List;
 
 import hhjt.bean.Ticket;
@@ -12,12 +13,12 @@ public interface TicketService {
 	Ticket findTicketById(Integer id);
 	List<Ticket> findTicketByPrice(Double price);
 	List<Ticket> findTicketByType(String ticketType);
-	List<Ticket> findTicketByBeginTime(String dateTime);
-	List<Ticket> findTicketByDeadline(String dateTime);
-	List<Ticket> findTicketByPriceAndBeginTime(Double price,String begin);
-	List<Ticket> findTicketByPriceAndDeadline(Double price,String deadline);
-	List<Ticket> findTicketByBeginTimeAndDeadline(String begin,String deadline);
-	List<Ticket> findTicketByPriceAndTime(Double price,String begin,String deadline);
-	List<Ticket> findTicketByTypeAndTime(String ticketType,String begin,String deadline);
-	List<Ticket> findTicketByTime(String dateTime);
+	List<Ticket> findTicketByBeginTime(Date dateTime);
+	List<Ticket> findTicketByDeadline(Date dateTime);
+	List<Ticket> findTicketByPriceAndBeginTime(Double price,Date begin);
+	List<Ticket> findTicketByPriceAndDeadline(Double price,Date deadline);
+	List<Ticket> findTicketByBeginTimeAndDeadline(Date begin,Date deadline);
+	List<Ticket> findTicketByPriceAndTime(Double price,Date begin,Date deadline);
+	List<Ticket> findTicketByTypeAndTime(String ticketType,Date begin,Date deadline);
+	List<Ticket> findTicketByTime(Date dateTime);
 }

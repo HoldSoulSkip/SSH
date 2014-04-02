@@ -1,5 +1,6 @@
 package hhjt.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import hhjt.bean.Ticket;
@@ -92,11 +93,13 @@ public class TicketDaoImpl implements TicketDao{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Ticket> findByTime(String time){
-		String sqlString = "from Ticket t where t.begin_time <= '"+time+"' and t.end_time >= '"+time+"'";
+	public List<Ticket> findByTime(Date time){
+		String sqlString = "from Ticket t where t.begin_time <= ? and t.end_time >= ?";
 		System.out.println(sqlString);
 		try{
-			Query q =sessionFactory.getCurrentSession().createQuery(sqlString);			
+			Query q =sessionFactory.getCurrentSession().createQuery(sqlString);	
+			q.setParameter(0, time);
+			q.setParameter(1, time);
 			List<Ticket> ticketList = q.list();
 			return ticketList;
 		}catch(RuntimeException re) {
