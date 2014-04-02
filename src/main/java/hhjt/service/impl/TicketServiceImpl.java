@@ -1,7 +1,6 @@
 package hhjt.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.transaction.Transactional;
 
@@ -67,7 +66,7 @@ public class TicketServiceImpl implements TicketService {
 	}
 
 	@Override
-	public List<Ticket> findTicketByBeginTime(Date dateTime) {
+	public List<Ticket> findTicketByBeginTime(String dateTime) {
 		QueryClass q = new QueryClass();
 		queryList.clear();
 		q.setName("begin_time");
@@ -77,7 +76,7 @@ public class TicketServiceImpl implements TicketService {
 	}
 
 	@Override
-	public List<Ticket> findTicketByDeadline(Date dateTime) {
+	public List<Ticket> findTicketByDeadline(String dateTime) {
 		QueryClass q = new QueryClass();
 		queryList.clear();
 		q.setName("end_time");
@@ -87,7 +86,7 @@ public class TicketServiceImpl implements TicketService {
 	}
 
 	@Override
-	public List<Ticket> findTicketByPriceAndBeginTime(Double price, Date begin) {		
+	public List<Ticket> findTicketByPriceAndBeginTime(Double price, String begin) {		
 		QueryClass q1 = new QueryClass(),q2 = new QueryClass();
 		queryList.clear();
 		q1.setName("price");
@@ -100,7 +99,7 @@ public class TicketServiceImpl implements TicketService {
 	}
 
 	@Override
-	public List<Ticket> findTicketByPriceAndDeadline(Double price, Date deadline) {
+	public List<Ticket> findTicketByPriceAndDeadline(Double price, String deadline) {
 		QueryClass q1 = new QueryClass(),q2 = new QueryClass();
 		queryList.clear();
 		q1.setName("price");
@@ -113,8 +112,8 @@ public class TicketServiceImpl implements TicketService {
 	}
 
 	@Override
-	public List<Ticket> findTicketByBeginTimeAndDeadline(Date begin,
-			Date deadline) {
+	public List<Ticket> findTicketByBeginTimeAndDeadline(String begin,
+			String deadline) {
 		QueryClass q1 = new QueryClass(),q2 = new QueryClass();
 		queryList.clear();		
 		q1.setName("begin_time");
@@ -127,8 +126,8 @@ public class TicketServiceImpl implements TicketService {
 	}
 
 	@Override
-	public List<Ticket> findTicketByPriceAndTime(Double price, Date begin,
-			Date deadline) {
+	public List<Ticket> findTicketByPriceAndTime(Double price, String begin,
+			String deadline) {
 		QueryClass q1 = new QueryClass(),q2 = new QueryClass(),q3 = new QueryClass();
 		queryList.clear();
 		q1.setName("price");
@@ -144,8 +143,8 @@ public class TicketServiceImpl implements TicketService {
 	}
 
 	@Override
-	public List<Ticket> findTicketByTypeAndTime(String ticketType, Date begin,
-			Date deadline) {
+	public List<Ticket> findTicketByTypeAndTime(String ticketType, String begin,
+			String deadline) {
 		QueryClass q1 = new QueryClass(),q2 = new QueryClass(),q3 = new QueryClass();
 		queryList.clear();
 		q1.setName("class_name");
@@ -158,6 +157,10 @@ public class TicketServiceImpl implements TicketService {
 		queryList.add(q2);
 		queryList.add(q3);
 		return ticketDao.findByProperty(queryList);
+	}
+	
+	public List<Ticket> findTicketByTime(String dateTime){
+		return ticketDao.findByTime(dateTime);
 	}
 
 }

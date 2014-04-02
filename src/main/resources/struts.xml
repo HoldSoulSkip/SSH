@@ -8,8 +8,10 @@
     <constant name="struts.devMode" value="false" />
  
     <package name="ssh" namespace="/" extends="struts-default">
- 
-        
+        <action name="ticketAction" class="ticketAction" method="findTickets">
+            <result>welcome.jsp</result>
+            <result name="input">buyTickets.jsp</result>
+        </action>
         <action name="act_loginAction" class="accountAction" method="login" >
         	<result name="success">loginsuc.jsp</result>
         	<result name="input">login.jsp</result>

@@ -9,5 +9,10 @@
 </head>
 <body>
 	OK,×¢²á³É¹¦£¬Çë<a href="index.jsp">µÇÂ½</a>
+	<div>
+	  <form action="ticketAction">
+	    <input type="submit" value="¹ºÆ±">
+	  </form>
+	</div>
 </body>
 </html>

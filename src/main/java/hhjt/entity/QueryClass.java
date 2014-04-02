@@ -3,7 +3,7 @@ package hhjt.entity;
 /**
  * 
  * @author 炜
- * 为t_ticket数据库的搜索语句设定t.name和t.value的数据结构
+ *为t_ticket数据库的搜索语句设定t.name和t.value的数据结构
  *
  */
 public class QueryClass {

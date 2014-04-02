@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="gb2312"%>
-    <%@taglib prefix="s" uri="/struts-tags" %>
+    pageEncoding="utf-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,39 +8,35 @@
 <title>Insert title here</title>
 </head>
 <body>
-	OK,»¶Ó­Äú${sessionScope.account.name }
+	OK,æ¬¢è¿æ‚¨${sessionScope.account.name }
 	<hr>
-	¸öÈËĞÅÏ¢£º<br>
-	ÕËºÅ£º${sessionScope.account.name }<br>
-	µç»°£º${sessionScope.account.tel }<br>
-	ÓÊÏä: ${sessionScope.account.email}<br>
-	<a href="edit_account.jsp">ĞŞ¸Ä</a>
+	<a href="act_reqEmpowerAction">ç”³è¯·æˆæƒ</a>
 	<hr>
-	<a href="act_reqEmpowerAction">ÉêÇëÊÚÈ¨</a>
-	<hr>
-	½ÓÊÕÏûÏ¢ÁĞ±í <br>
+	æ¥æ”¶æ¶ˆæ¯åˆ—è¡¨ <br>
 	<s:iterator value="recvMsgs">
-	ÓÃ»§<s:property value="sendAccount.id"/>
+	ç”¨æˆ·<s:property value="sendAccount.id"/>
 	<s:property value="content"/>
 	<s:property value="state"/>
-	<a href="act_empowerAction?accountId=<s:property value="sendAccount.id"/>">ÊÚÈ¨</a><a href="act_delMsgAction?msgId=<s:property value="id"/>">É¾³ı</a><br>
+	<a href="act_empowerAction?accountId=<s:property value="sendAccount.id"/>">æˆæƒ</a>
+	<a href="act_delMsgAction?msgId=<s:property value="id"/>">åˆ é™¤</a><br>
+	<br>
 	</s:iterator>
 	<hr>
-	·¢ËÍÏûÏ¢ÁĞ±í <br>
+	å‘é€æ¶ˆæ¯åˆ—è¡¨ <br>
 	<s:iterator value="sendMsgs">
-	ÓÃ»§<s:property value="recvAccount.id"/>
+	ç”¨æˆ·<s:property value="recvAccount.id"/>
 	<s:property value="content"/>
 	<s:property value="state"/>
-	<a href="act_delMsgAction?msgId=<s:property value="id"/>">É¾³ı</a><br>
+	<a href="act_delMsgAction?msgId=<s:property value="id"/>">åˆ é™¤</a><br>
 	</s:iterator>
 	<hr>
-	¶©µ¥ÁĞ±í<br>
+	è®¢å•åˆ—è¡¨<br>
 	<s:iterator value="orders">
-	¶©µ¥ºÅ£º<s:property value="orderId"/>
+	è®¢å•å·ï¼š<s:property value="orderId"/>
 	<s:property value="orderState"/><br>
 	</s:iterator>
 	<hr>
-	<a href="order.jsp">ÏÂ·¢¶©µ¥</a>
+	<a href="buyTickets.jsp">ä¸‹å‘è®¢å•</a>
 	<hr>
 </body>
 </html>
