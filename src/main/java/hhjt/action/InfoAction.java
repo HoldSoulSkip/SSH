@@ -167,7 +167,7 @@ public class InfoAction extends ActionSupport implements Preparable,
 	public Account getAccount() {
 		return account;
 	}
-
+	//set account
 	public void setAccount(Account account) {
 		this.account = account;
 	}
