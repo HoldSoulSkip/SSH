@@ -24,14 +24,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
  <body>
-		<s:if test="infos.isEmpty() == true">目前您没有任何调查项!</s:if >
+		<s:if test="infos.isEmpty() == true">目前没有任何公告</s:if >
 		<s:else>
 			<table>
 				<tr>
 					<td colspan="10" style="height: 5px"></td>
 				</tr>
 				<tr>
-					<td colspan="10" class="tdHeader">我的调查:</td>
+					<td colspan="10" class="tdHeader">公告：</td>
 				</tr>
 				<tr>
 					<td colspan="10" style="height: 5px"></td>
