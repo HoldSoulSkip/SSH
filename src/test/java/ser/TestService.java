@@ -3,6 +3,7 @@ package ser;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import hhjt.bean.Ticket;
@@ -28,14 +29,18 @@ public class TestService {
 		t.setBegin_time(time);
 		t.setClass_name("普通票");
 		t.setPrice(90.0);
-		String s = "2014-05-28"; 
+		String s = "2014-05-01"; 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
 		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-		//Date s_date =(Date)sdf.parse(s);
+		Date s_date =(Date)sdf.parse(s);
 		//List<Ticket> tic = service.findTicketByPriceAndBeginTime(90.0, s_date);
-		
+		//service.addTicket(t);
 		//List<Ticket> tic = service.findTicketByType("普通票");
-		List<Ticket> tic = service.findTicketByTime(s);
-		//service.addTicket(t);		
-		System.out.println(tic.iterator().next().getClass_name());
+		List<Ticket> tic = service.findTicketByTime(s_date);
+		Iterator<Ticket>  it = tic.iterator();
+		while(it.hasNext()){
+			Ticket ti = it.next();			
+			System.out.println(ti.getId()+ti.getClass_name());
+		}		  
 	}
 }

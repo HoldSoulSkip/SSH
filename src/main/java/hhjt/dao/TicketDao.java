@@ -1,5 +1,6 @@
 package hhjt.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import hhjt.bean.Ticket;
@@ -12,6 +13,6 @@ public interface TicketDao {
 	public boolean delete(Ticket instance);
 	public Ticket findById(Integer id);
 	public List<Ticket> findByProperty(List<QueryClass> queryList );
-	public List<Ticket> findByTime(String time);
+	public List<Ticket> findByTime(Date time);
 }
 
