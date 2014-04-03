@@ -28,9 +28,41 @@
         	<result name="success">loginsuc.jsp</result>
         </action>
        
+        <action name="act_preOrderAction" class="accountAction" method="preOrder" >
+        	<result name="success">buyTickets.jsp</result>
+        </action>
+        
        <action name="act_orderAction" class="accountAction" method="order" >
         	<result name="success">loginsuc.jsp</result>
         </action>
+        
+         <action name="act_editOrderAction" class="accountAction" method="editOrder" >
+        	<result name="success">buyTickets.jsp</result>
+        </action>
+
+        
+        <action name="act_editAccountAction" class="accountAction" method="editAccount" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
+        
+        
+        <action name="act_delMsgAction" class="accountAction" method="delMsg" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
+        
+        <action name="act_delOrderAction" class="accountAction" method="delOrder" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
+        
+         <action name="act_upgradeOrderAction" class="accountAction" method="upgradeOrder" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
+        
+         <action name="act_payOrderAction" class="accountAction" method="payOrder" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
+        
+
     </package>
     <include file="struts-info.xml" />
 </struts>

@@ -1,18 +1,19 @@
 package hhjt.action;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import hhjt.bean.Account;
 import hhjt.bean.Message;
 import hhjt.bean.Order;
+import hhjt.bean.Ticket;
 import hhjt.service.AccountService;
 import hhjt.service.MessageService;
 import hhjt.service.OrderService;
 import hhjt.service.TicketService;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
@@ -29,6 +30,8 @@ public class AccountAction{
 	private MessageService msgService;
 	@Resource
 	private OrderService orderService;
+	@Resource
+	private TicketService ticketServiceImpl;
 	
 	private String username;
 	private String password;
@@ -40,6 +43,13 @@ public class AccountAction{
 	private int ticketId;
 	private int msgId;
 	private List<Order> orders;
+	private String orderId;
+	private Date orderTime;
+	private Date orderUseTime;
+	private int act;
+	private int ordId;
+	private String email;
+	private String tel;
 	
 	private void load(){
 		loadSendMsgs();
@@ -113,14 +123,63 @@ public class AccountAction{
 	}
 	
 	public String order(){
+		System.out.println("act="+act);
 		Map session=ActionContext.getContext().getSession();
-		Account act=(Account) session.get("account");
-		order.setOrderId(System.currentTimeMillis()+""+act.getId());
-		orderService.addOrder(order,ticketId,act.getId());
+		Account ac=(Account) session.get("account");
+		if(act==0){
+			orderService.addOrder(order,ticketId,ac.getId());
+		}else if(act==1){
+			order.setId(ordId);
+			order.setAccount(ac);
+			Ticket ticket=ticketServiceImpl.findTicketById(ticketId);
+			order.setTicket(ticket);
+			System.out.println(order.getId());
+			orderService.uptOrder(order);
+		}
 		load();
 		return "success";
 	}
 	
+	public String preOrder(){
+		Map session=ActionContext.getContext().getSession();
+		account=(Account) session.get("account");
+		orderId=System.currentTimeMillis()+""+account.getId();
+		orderTime=new Date();
+		return "success";
+	}
+	
+	public String editOrder(){
+		
+		order=orderService.findOrderById(ordId);
+		ordId=order.getId();
+		orderId=order.getOrderId();
+		email=order.getEmail();
+		tel=order.getTel();
+		orderTime=order.getOrderTime();
+		orderUseTime=order.getTicUseTime();
+		account=order.getAccount();
+		return "success";
+	}
+	
+	public String delOrder(){
+		
+		orderService.delOrder(ordId);
+		load();
+		return "success";
+	}
+	
+	public String upgradeOrder(){
+		orderService.upgradeOrder(ordId);
+		load();
+		return "success";
+	}
+	
+	public String payOrder(){
+		
+		orderService.payOrder(ordId);
+		load();
+		return "success";
+	}
 	public String empower(){
 		
 		Map session=ActionContext.getContext().getSession();
@@ -230,6 +289,48 @@ public class AccountAction{
 	}
 	public void setMsgId(int msgId) {
 		this.msgId = msgId;
+	}
+	public String getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+	public Date getOrderTime() {
+		return orderTime;
+	}
+	public void setOrderTime(Date orderTime) {
+		this.orderTime = orderTime;
+	}
+	public Date getOrderUseTime() {
+		return orderUseTime;
+	}
+	public void setOrderUseTime(Date orderUseTime) {
+		this.orderUseTime = orderUseTime;
+	}
+	public int getAct() {
+		return act;
+	}
+	public void setAct(int act) {
+		this.act = act;
+	}
+	public int getOrdId() {
+		return ordId;
+	}
+	public void setOrdId(int ordId) {
+		this.ordId = ordId;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 	
 	

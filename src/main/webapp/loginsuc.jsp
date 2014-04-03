@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	OK,欢迎您${sessionScope.account.name }
+	OK,欢迎您${sessionScope.account.name }<br>
+	<a href="edit_account.jsp">修改信息</a>
 	<hr>
 	<a href="act_reqEmpowerAction">申请授权</a>
 	<hr>
@@ -31,12 +32,18 @@
 	</s:iterator>
 	<hr>
 	订单列表<br>
+	订单号&nbsp订单状态&nbsp操作<br>
 	<s:iterator value="orders">
-	订单号：<s:property value="orderId"/>
-	<s:property value="orderState"/><br>
+	<s:property value="orderId"/>
+	<s:property value="orderState"/>
+	<a href="act_editOrderAction?ordId=<s:property value='id'/>&&act=1">修改</a>
+	<a href="act_delOrderAction?ordId=<s:property value='id'/>">删除</a>
+	<a href="act_upgradeOrderAction?ordId=<s:property value='id'/>">审核</a>
+	<a href="act_payOrderAction?ordId=<s:property value='id'/>">结账</a>
+	<br>
 	</s:iterator>
 	<hr>
-	<a href="buyTickets.jsp">下发订单</a>
+	<a href="act_preOrderAction?act=0">下发订单</a>
 	<hr>
 </body>
 </html>

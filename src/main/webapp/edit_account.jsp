@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>×¢²á</title>
+<title>ÐÞ¸ÄÐÅÏ¢</title>
 </head>
 <body>
 	<form action="act_editAccountAction" method="post">
