@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
-
- 
-<struts>
- 
+<struts> 
  	<constant name="struts.objectFactory" value="spring" />
     <constant name="struts.devMode" value="false" />
  
-    <package name="ssh" namespace="/" extends="struts-default">
-        <action name="ticketAction" class="ticketAction" method="findTickets">
-            <result>welcome.jsp</result>
-            <result name="input">buyTickets.jsp</result>
-        </action>
+    
+    <package name="ssh" namespace="/" extends="json-default"> 
+    	<action name="ticket_action" class="ticketAction" method="findTickets">
+        	<result name="success" type="json">
+        		<param name="root">tickets</param>
+        	</result>
+    	</action>       
         <action name="act_loginAction" class="accountAction" method="login" >
         	<result name="success">loginsuc.jsp</result>
         	<result name="input">login.jsp</result>
@@ -36,13 +35,18 @@
         
         <action name="act_editAccountAction" class="accountAction" method="editAccount" >
         	<result name="success">loginsuc.jsp</result>
-        </action>
-        
+        </action>      
         
         <action name="act_delMsgAction" class="accountAction" method="delMsg" >
         	<result name="success">loginsuc.jsp</result>
-        </action>
-        
+        </action>        
+    </package>
+    <package name="ssh" namespace="/" extends="json-default"> 
+    	<action name="ticket_action" class="ticketAction" method="findTickets">
+        	<result name="success" type="json">
+        		<param name="root">tickets</param>
+        	</result>
+    	</action>
     </package>
     <include file="struts-info.xml" />
 </struts>
