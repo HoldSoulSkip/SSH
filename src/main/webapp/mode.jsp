@@ -16,20 +16,20 @@
 </title>
 <decorator:head />
 </head>
-<body>
+<body bgcolor="Gainsboro ">
 	<div style="width: 90%;height: 100%">
 
 
 
 		<div>
-			<div align="center" style="height: 50px;">
-				<p style="font-family:Courier New;font-size: 30px;">欢迎使用网上订票系统</p>
+			<div align="center">
+			  <img src="imgs/head1.jpg" width="800" height="150">
 			</div>
 		</div>
 		<div class="divWhiteLine"></div>
-		<div class="divNavigatorOuterFrame">
+		<div class="divNavigatorOuterFrame" style="margin-left: 200px;width: 800px">
 			<div class="divNavigatorInnerFrame">
-				<s:a action="" namespace="/">[首页]</s:a>
+				<s:a href="login.jsp" namespace="/">[首页]</s:a>
 				&nbsp;
 				<s:a action="InfoAction_toLookInfoList" namespace="/">[公告]</s:a>
 				&nbsp;
@@ -53,9 +53,15 @@
 		</div>
 
 
-
+		<div style="margin-left: 200px;height: 400px">
+		<img src="imgs/gg1.jpg" align="left" width="200" height="400"/>
+		<div align="left" style="margin-left: 50px;width: 750px"">
 		<decorator:body />
 		<!--被装饰页面的body-->
+		</div>
+		
+</div>
+	
 
 		<div class="divWhiteLine" align="center">
 			<p id="cp">
