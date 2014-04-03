@@ -42,12 +42,24 @@ public class Order implements Serializable {
 	@Column(name="order_state")
 	private int orderState;
 
+	
+	private String email;
+	private String tel;
+	
 	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
 	}
 
 	public Ticket getTicket() {
@@ -64,16 +76,6 @@ public class Order implements Serializable {
 
 	public void setAccount(Account account) {
 		this.account = account;
-	}
-
-	
-
-	public String getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
 	}
 
 	public Date getOrderTime() {
@@ -98,6 +100,22 @@ public class Order implements Serializable {
 
 	public void setOrderState(int orderState) {
 		this.orderState = orderState;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 
 	

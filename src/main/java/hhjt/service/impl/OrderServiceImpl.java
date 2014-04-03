@@ -39,9 +39,10 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public void delOrder(Order order) {
+	public void delOrder(int id) {
 		// TODO Auto-generated method stub
-		orderDao.deleteEntity(order);
+		String hql="delete Order ord where ord.id=?";
+		orderDao.batchEntityByHQL(hql,id);
 	}
 
 	@Override
@@ -54,6 +55,27 @@ public class OrderServiceImpl implements OrderService {
 	public void verifyOrder(int orderId) {
 		// TODO Auto-generated method stub
 		String hql="Update Order ord set ord.level=2 where ord.accout.id=?";
+		orderDao.batchEntityByHQL(hql, orderId);
+	}
+
+	@Override
+	public Order findOrderById(int id) {
+		// TODO Auto-generated method stub
+		String hql="from Order ord where ord.id=?";
+		return (Order) orderDao.uniqueResult(hql, id);
+	}
+
+	@Override
+	public void upgradeOrder(int orderId) {
+		// TODO Auto-generated method stub
+		String hql="update Order odr set odr.orderState=1 where odr.id=?";
+		orderDao.batchEntityByHQL(hql, orderId);
+	}
+
+	@Override
+	public void payOrder(int orderId) {
+		// TODO Auto-generated method stub
+		String hql="update Order odr set odr.orderState=2 where odr.id=?";
 		orderDao.batchEntityByHQL(hql, orderId);
 	}
 
