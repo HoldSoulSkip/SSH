@@ -4,23 +4,12 @@
  	<constant name="struts.objectFactory" value="spring" />
     <constant name="struts.devMode" value="false" />
  
-<<<<<<< HEAD
-    <package name="ssh" namespace="/" extends="struts-default"> 
-=======
-<<<<<<< HEAD
-    <package name="ssh" namespace="/" extends="struts-default">
- 
-        
-=======
-    
     <package name="ssh" namespace="/" extends="json-default"> 
     	<action name="ticket_action" class="ticketAction" method="findTickets">
         	<result name="success" type="json">
         		<param name="root">tickets</param>
         	</result>
-    	</action>       
->>>>>>> cw
->>>>>>> e1ada39dd18f940c21542b877ff2d926a463e2e2
+    	</action>
         <action name="act_loginAction" class="accountAction" method="login" >
         	<result name="success">loginsuc.jsp</result>
         	<result name="input">login.jsp</result>
@@ -58,10 +47,6 @@
         
         <action name="act_delMsgAction" class="accountAction" method="delMsg" >
         	<result name="success">loginsuc.jsp</result>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> e1ada39dd18f940c21542b877ff2d926a463e2e2
         </action>
         
         <action name="act_delOrderAction" class="accountAction" method="delOrder" >
@@ -75,25 +60,7 @@
          <action name="act_payOrderAction" class="accountAction" method="payOrder" >
         	<result name="success">loginsuc.jsp</result>
         </action>
-<<<<<<< HEAD
-       
-=======
-        
 
-=======
-        </action>        
->>>>>>> e1ada39dd18f940c21542b877ff2d926a463e2e2
-    </package>
-    <package name="ssh" namespace="/" extends="json-default"> 
-    	<action name="ticket_action" class="ticketAction" method="findTickets">
-        	<result name="success" type="json">
-        		<param name="root">tickets</param>
-        	</result>
-    	</action>
-<<<<<<< HEAD
-=======
->>>>>>> cw
->>>>>>> e1ada39dd18f940c21542b877ff2d926a463e2e2
     </package>
     <include file="struts-info.xml" />
 </struts>

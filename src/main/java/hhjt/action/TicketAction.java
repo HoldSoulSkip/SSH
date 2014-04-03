@@ -24,12 +24,9 @@ public class TicketAction {
 	private List<Ticket> tickets;
 	
 	public String findTickets() throws Exception {
-		System.out.println(use_time);
 		SimpleDateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd");
 		Date dateTime = dateformat.parse(use_time);
 		tickets = ticService.findTicketByTime(dateTime);
-		ActionContext.getContext().getSession().put("ticket", tickets);	
-		System.out.println("调用action成功 "+tickets.size());
 		return "success";
 	}
 	
