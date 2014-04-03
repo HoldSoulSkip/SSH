@@ -11,19 +11,22 @@
 <title>购票</title>
 </head>
 <body>
+
   <div>
     <div>
     <form action="act_orderAction" method="post">
+    <input type="hidden" name="act" value='<s:property value="act"/>'/>
+	<input type="hidden" name="ordId" value='<s:property value="ordId"/>'/>
     <table>
       <tr id="orderInfo">
       	<td width="80">订单号：<td><input type="text" name="order.orderId" value='<s:property value="orderId"/>' readonly="readonly"/>
       	<td width="80">定日期：<td><input type="text" name="order.orderTime" value='<s:property value="orderTime"/>' readonly="readonly"/>     	
       <tr id="consumerInfo">
-        <td width="80">订票人：<td><span id="account_name"><s:property value="account.id"/><input type="hidden" name="account.id" value='<s:property value="account.id"/>'></span>
+        <td width="80">订票人：<td>${sessionScope.account.name }
         <td width="80">等级：<td><s:property value="account.level"/> 
       <tr  id="consumerInfo">       
-        <td width="80">邮箱：<td><input type="text" name="account.email" value='<s:property value="account.email"/>'/>
-       	<td width="80">电话：<td><input type="text" name="account.tel" value='<s:property value="account.tel"/>'/>        
+        <td width="80">邮箱：<td><input type="text" name="order.email" value='<s:property value="email"/>'/>
+       	<td width="80">电话：<td><input type="text" name="order.tel" value='<s:property value="tel"/>'/>        
       </tr>
       <tr id="ticketsInfo">
         <td width="80">使用时间：<td><input type="text" name="order.ticUseTime" value="<s:property value="orderUseTime"/>" onclick="selectDate(this,this)">

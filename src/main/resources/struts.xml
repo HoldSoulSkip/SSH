@@ -51,6 +51,18 @@
         	<result name="success">loginsuc.jsp</result>
         </action>
         
+        <action name="act_delOrderAction" class="accountAction" method="delOrder" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
+        
+         <action name="act_upgradeOrderAction" class="accountAction" method="upgradeOrder" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
+        
+         <action name="act_payOrderAction" class="accountAction" method="payOrder" >
+        	<result name="success">loginsuc.jsp</result>
+        </action>
+        
     </package>
     <include file="struts-info.xml" />
 </struts>

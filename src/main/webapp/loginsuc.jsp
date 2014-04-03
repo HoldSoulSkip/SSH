@@ -36,14 +36,14 @@
 	<s:iterator value="orders">
 	<s:property value="orderId"/>
 	<s:property value="orderState"/>
-	<a href="act_editOrderAction?orderId=<s:property value="orderId"/>">修改</a>
-	<a href="#">删除</a>
-	<a href="#">审核</a>
-	<a href="#">结账</a>
+	<a href="act_editOrderAction?ordId=<s:property value='id'/>&&act=1">修改</a>
+	<a href="act_delOrderAction?ordId=<s:property value='id'/>">删除</a>
+	<a href="act_upgradeOrderAction?ordId=<s:property value='id'/>">审核</a>
+	<a href="act_payOrderAction?ordId=<s:property value='id'/>">结账</a>
 	<br>
 	</s:iterator>
 	<hr>
-	<a href="act_preOrderAction">下发订单</a>
+	<a href="act_preOrderAction?act=0">下发订单</a>
 	<hr>
 </body>
 </html>
